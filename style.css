@@ -939,6 +939,8 @@ h2 em {
    ========================================================================== */
 .certificado_titulo {
   font-family: var(--font-title);
+  font-size: 2em;
+  margin: 0.67em 0;        
   font-weight: 600;
   letter-spacing: 0;
   line-height: 1.04;
@@ -1039,7 +1041,7 @@ h2 em {
   text-transform: uppercase;
 }
 
-.certificado-card h4 {
+.certificado-card h3 {
   margin: 12px 0;
   font-size: 1.15rem;
   line-height: 1.5;
