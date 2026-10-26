@@ -1397,9 +1397,4 @@ h2 em {
   .flower-note,
   .hero:after {
     transition: none;
-  }
-<<<<<<< HEAD
-}:translate3d(var(--mouse-x,0),var(--mouse-y,0),0);transition:transform .2s ease-out}
-=======
-}
->>>>>>> aacd325 (eu implementei meus certificados e limpei o codigo)
+  } }
