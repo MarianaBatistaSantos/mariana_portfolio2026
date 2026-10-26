@@ -1,257 +1,1401 @@
-/* 1. Variáveis: paleta oficial, medidas e cores globais. */
-:root{--nightlife:#1C1859;--velvety:#440327;--lingonberries:#8B0535;--hot-pink:#F10393;--light-magenta:#FE6EF0;--bg:#05030a;--surface:#0c0812;--text:#faf4ff;--muted:#b8a9c4;--line:rgba(254,110,240,.22);--content:1080px}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,sans-serif;line-height:1.65;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 80% 10%,#1c185933,transparent 35%),radial-gradient(ellipse at 5% 60%,#44032744,transparent 34%),#05030a}
-a{color:inherit;text-decoration:none}
-p{margin-top:0}::selection{background:var(--lingonberries);color:white}
-code{color:var(--light-magenta)}
-
-/* 2. Fundo atmosférico: manchas de luz muito suaves para manter o texto legível. */
-.ambient{position:fixed;width:280px;height:280px;border-radius:50%;filter:blur(115px);opacity:.13;z-index:-1;pointer-events:none}
-.ambient-a{right:-130px;top:10%;background:var(--hot-pink)}
-.ambient-b{left:-160px;bottom:5%;background:var(--nightlife)}
-
-/* 3. Cabeçalho e navegação: menu compacto com versão móvel. */
-.header{width:min(var(--content),calc(100% - 48px));margin:auto;min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px;border-bottom:1px solid var(--line);position:relative;z-index:5}
-.brand{font-size:1.3rem;letter-spacing:-.07em;font-weight:600;white-space:nowrap}
-.brand:first-letter,.pink{color:var(--hot-pink)}
-.nav{display:flex;align-items:center;gap:clamp(12px,2.3vw,27px)}
-.nav a{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
-.nav a:hover{color:var(--light-magenta)}
-.nav a:last-child{border:1px solid var(--hot-pink);border-radius:30px;padding:7px 12px;color:var(--text)}
-.menu-toggle{display:none;color:var(--light-magenta);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
-
-/* 4. Páginas: largura máxima e espaços amplos para evitar excesso de informação. */
-.page{width:min(var(--content),calc(100% - 48px));margin:auto;padding:clamp(68px,9vw,112px) 0;border-bottom:1px solid var(--line);position:relative}
-.hero{min-height:calc(100svh - 74px);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:25px;padding-top:50px;padding-bottom:75px}
-.eyebrow,.micro{font:500 .68rem 'DM Mono',monospace;letter-spacing:.11em;color:var(--light-magenta);text-transform:uppercase}
-.hero h1{font-size:clamp(3.2rem,7.2vw,6rem);line-height:.98;letter-spacing:-.075em;font-weight:500;margin:22px 0}
-.hero h1 span{color:#d6c9e2}.hero h1 em,h2 em{font-style:normal;color:var(--hot-pink)}
-.lead{font-size:1.05rem;color:#d5c8df}
-.actions{display:flex;flex-wrap:wrap;gap:11px;margin:26px 0 20px}
-.btn{padding:11px 17px;border:1px solid var(--line);border-radius:8px;font-size:.8rem}
-.btn.primary{background:linear-gradient(110deg,var(--lingonberries),var(--hot-pink));border-color:transparent;box-shadow:0 8px 26px #f103932b}
-.btn:hover{border-color:var(--light-magenta);transform:translateY(-2px)}
-.social{display:flex;flex-wrap:wrap;gap:18px;color:var(--light-magenta);font-size:.8rem}
-.terminal{margin-top:28px;padding:10px 12px;border-left:2px solid var(--hot-pink);background:#100a19;color:var(--muted);font: .68rem 'DM Mono',monospace;max-width:390px}
-.terminal span{float:right;color:var(--light-magenta)}
-.scroll{position:absolute;bottom:22px;left:0;color:var(--muted);font: .6rem 'DM Mono',monospace;letter-spacing:.1em}
-
-/* 5. Flores holográficas e interface ornamental: usa a imagem em images/flor-holografica.png. */
-.flower-stage{height:470px;position:relative;display:grid;place-items:center;isolation:isolate;overflow:visible}
-.flower-stage:before{content:"";position:absolute;inset:8% 0 0;background:radial-gradient(ellipse at 50% 45%,#f1039330,transparent 65%);filter:blur(20px);z-index:-1}
-.hero-flower-image{position:relative;z-index:1;width:min(112%,540px);height:112%;max-height:540px;object-fit:contain;filter:drop-shadow(0 0 18px #f1039350);mix-blend-mode:screen;animation:flower-float 7s ease-in-out infinite}
-.flower-note{position:absolute;z-index:2;color:var(--light-magenta);font:.57rem 'DM Mono',monospace;letter-spacing:.1em}
-.note-bottom{left:0;bottom:5%}
-.flower-hud{position:absolute;z-index:3;color:#fbd5fa;border:1px solid #fe6ef055;background:#05030a9c;padding:8px 10px;font:.55rem 'DM Mono',monospace;letter-spacing:.06em;line-height:1.7;backdrop-filter:blur(5px)}
-.flower-hud span{color:var(--hot-pink)}
-.flower-hud small{color:var(--muted);font-size:.5rem}
-.hud-top{top:8%;right:0}
-.hud-side{left:0;top:48%;writing-mode:vertical-rl;transform:rotate(180deg)}
-
-/* Linhas finas, cruzamentos e estrelas decorativas espalhadas entre as seções. */
-.page:before{content:"";position:absolute;pointer-events:none;top:20px;left:-13px;width:24px;height:calc(100% - 40px);opacity:.65;background:repeating-linear-gradient(to bottom,transparent 0 28px,#f1039380 28px 29px,transparent 29px 55px);mask-image:linear-gradient(to bottom,transparent,black 8%,black 88%,transparent)}
-.page:after{content:"✦";position:absolute;top:24px;left:-20px;color:var(--light-magenta);font-size:15px;text-shadow:0 0 12px var(--hot-pink);pointer-events:none;animation:star-pulse 3.5s ease-in-out infinite}
-.header{position:relative}
-.header:after{content:"✦";position:absolute;right:-20px;bottom:-9px;color:var(--hot-pink);font-size:13px;text-shadow:0 0 10px var(--hot-pink);pointer-events:none}
-.hero{overflow:hidden}
-.hero:after{content:"";position:absolute;inset:14px 0 24px;pointer-events:none;opacity:.45;background:linear-gradient(90deg,transparent 4.3%,#f1039333 4.35%,transparent 4.45%),linear-gradient(0deg,transparent 88%,#fe6ef033 88.1%,transparent 88.2%);z-index:-1}
-.hero-copy{position:relative;z-index:2}
-.hero-copy:before{content:"✦";position:absolute;top:-20px;left:-24px;color:var(--hot-pink);font-size:12px;text-shadow:0 0 10px var(--hot-pink)}
+/* ==========================================================================
+   ÍNDICE
+   1. Variáveis e base
+   2. Fundo e decoração
+   3. Cabeçalho e navegação
+   4. Início (hero)
+   5. Títulos e sobre mim
+   6. Habilidades
+   7. Projetos
+   8. Formação
+   9. Certificados
+   10. Contato e rodapé
+   11. Animações
+   12. Responsividade
+   ========================================================================== */
 
 
-#formacao:after{content:"✦  ·  ✧  ·  ✦";position:absolute;right:2%;top:35px;color:#f103937a;font: .8rem 'DM Mono',monospace;letter-spacing:.6em;pointer-events:none}
-@keyframes flower-float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-9px) rotate(1deg)}}
-@keyframes star-pulse{0%,100%{opacity:.5;transform:scale(.9)}50%{opacity:1;transform:scale(1.18)}}
+/* ==========================================================================
+   1. VARIÁVEIS E BASE
+   ========================================================================== */
+:root {
+  /* Paleta */
+  --nightlife: #1C1859;
+  --velvety: #440327;
+  --lingonberries: #8B0535;
+  --hot-pink: #F10393;
+  --light-magenta: #FE6EF0;
 
-/* 6. Títulos, sobre mim e retrato substituível. */
-.heading{margin-bottom:34px;max-width:700px}
-.heading h2{font-size:clamp(2.1rem,4.5vw,3.5rem);line-height:1.13;letter-spacing:-.06em;font-weight:500;margin:8px 0 12px}
-.muted{color:var(--muted)}
-.about{display:grid;grid-template-columns:minmax(210px,.7fr) 1.3fr;gap:clamp(24px,5vw,65px);align-items:start}
-.portrait,.panel,.project,.learning{background:linear-gradient(145deg,#100a19ee,#07040cee);border:1px solid var(--line);border-radius:14px;box-shadow:0 0 28px #f1039310}
-.portrait{padding:15px}
-.initials{aspect-ratio:4/4.5;display:grid;place-items:center;background:radial-gradient(circle,#f103933d,transparent 42%),linear-gradient(145deg,#190d26,#05030a);border:1px solid #fe6ef055;color:var(--light-magenta);font-size:4rem;text-shadow:0 0 25px var(--hot-pink)}
-.portrait small{display:block;text-align:center;color:var(--muted);font: .55rem 'DM Mono',monospace;margin-top:8px}
-.portrait .micro{font-size:.57rem;margin:15px 0 0}
-.about-copy p{color:#d0c4da;margin-bottom:16px}
-.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.pills span{font-size:.7rem;color:#edcce9;padding:6px 10px;border:1px solid var(--line);border-radius:30px;background:#44032724}
-.edit-tip{font-size:.75rem;color:var(--light-magenta)!important;margin-top:18px}
+  /* Cores globais */
+  --bg: #05030a;
+  --surface: #0c0812;
+  --text: #faf4ff;
+  --muted: #b8a9c4;
+  --line: rgba(254, 110, 240, .22);
 
-/* 7. Habilidades e dashboard: cartões de tecnologia e gráfico interativo. */
-.skills-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:17px}
-.panel{padding:clamp(18px,3vw,27px)}
-.panel h3{margin:0 0 20px}
-.skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
-.skills>div{display:flex;align-items:center;gap:10px;padding:11px;border:1px solid #fe6ef020;border-radius:9px;background:#05030a88;min-width:0}
-.skill-icon{flex:0 0 38px;height:38px;display:grid;place-items:center;background:#f103931b;border-radius:8px;color:var(--light-magenta);font: .75rem 'DM Mono',monospace}
-.skills strong,.skills small{display:block}
-.skills strong{font-size:.78rem}
-.skills small{font-size:.63rem;color:var(--muted);line-height:1.4}
-.chart-wrap{height:230px;position:relative}
-.small{font-size:.68rem}
-.soft{margin-top:20px}
-
-/* 8. Projetos: cartões duplicáveis com espaço para descrição, tags e link. */
-.projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
-.project{overflow:hidden;transition:transform .2s,border-color .2s}
-.project:hover{transform:translateY(-4px);border-color:#fe6ef077}
-.project-art{height:145px;padding:13px;position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:#090611}
-.project-art>span{color:var(--light-magenta);font: .58rem 'DM Mono',monospace}
-.dashboard-art{background:radial-gradient(ellipse at 50% 100%,#f103933b,transparent 60%),#090611}
-.bars{position:absolute;inset:auto 15px 14px;height:68px;display:flex;align-items:end;gap:8px}
-.bars i{flex:1;height:38%;background:linear-gradient(var(--light-magenta),var(--lingonberries));border-radius:3px 3px 0 0}
-.bars i:nth-child(2){height:72%}
-.bars i:nth-child(3){height:53%}
-.bars i:nth-child(4){height:92%}
-.bars i:nth-child(5){height:64%}
-.flower-art{display:grid;place-items:center;background:radial-gradient(circle,#f1039330,transparent 50%),#090611}
-.flower-art b{font-size:5rem;color:var(--light-magenta);text-shadow:0 0 22px var(--hot-pink);animation:spin 20s linear infinite}
-.code-art pre{margin:12px 0 0 10%;font: .75rem/1.6 'DM Mono',monospace;color:#e8a4e4}
-.project-copy{padding:17px}
-.project-copy h3{font-size:1rem;margin:7px 0}
-.project-copy p:not(.micro){font-size:.75rem;color:var(--muted);min-height:72px}
-.project-copy .micro{font-size:.58rem;margin:0}
-.tags{display:flex;flex-wrap:wrap;gap:5px;margin:14px 0}
-.tags span{font-size:.61rem;color:#d7c5df;border:1px solid #6850ad77;background:#1c185944;border-radius:5px;padding:3px 6px}
-.project-link{font-size:.73rem;color:var(--light-magenta)}
-.add-note{display:flex;gap:13px;align-items:center;margin-top:18px;padding:15px 18px;border:1px dashed #fe6ef055;border-radius:12px}
-.add-note>span{color:var(--hot-pink);font-size:1.4rem}
-.add-note p{margin:0;font-size:.8rem}
-.add-note small{color:var(--muted)}
-
-/* 9. Formação: linha do tempo que vira coluna no celular. */
-.timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;position:relative;padding-top:27px}
-.timeline:before{content:"";position:absolute;left:0;right:0;top:8px;height:1px;background:linear-gradient(90deg,var(--hot-pink),transparent)}
-.timeline article{position:relative;padding-right:12px}
-.dot{position:absolute;top:-25px;width:12px;height:12px;border:2px solid var(--hot-pink);border-radius:50%;background:var(--bg);box-shadow:0 0 12px #f1039380}
-.timeline h3{font-size:.9rem;margin:8px 0}
-.timeline article>p:last-child,.learning p:last-child{font-size:.76rem;color:var(--muted)}
-.timeline .micro{margin-bottom:5px}
-.learning{display:flex;gap:17px;padding:21px;margin-top:28px}
-.learning>span{font-size:1.5rem;color:var(--hot-pink)}
-.learning .micro{margin-bottom:5px}
-.learning h3{margin-bottom:7px}
-
-/* 10. Contato e rodapé: atalhos diretos, com espaço confortável para toque. */
-.contact{min-height:450px}
-.contact-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.contact-links a{display:flex;align-items:center;gap:11px;padding:16px;border:1px solid var(--line);border-radius:11px;background:#0c0812}
-.contact-links a:hover{border-color:var(--hot-pink)}
-.contact-links a>span{font-size:1.25rem;color:var(--light-magenta)}
-.contact-links b{font-size:.78rem;flex:1;min-width:0}
-.contact-links small{display:block;font-weight:400;color:var(--muted);font-size:.65rem;overflow-wrap:anywhere}
-.contact-links strong{color:var(--hot-pink)}
-.footer{width:min(var(--content),calc(100% - 48px));margin:auto;padding:24px 0 30px;display:flex;align-items:center;justify-content:space-between;gap:15px;color:var(--muted);font-size:.68rem}
-.footer p{margin:0}
-.footer .brand{font-size:1rem}
-
-/* 11. Animações delicadas e respeito à preferência por movimento reduzido. */
-@keyframes glow{0%,100%{filter:brightness(.93)}50%{filter:brightness(1.2)}}@keyframes spin{to{transform:rotate(360deg)}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
-
-/* 12. Responsividade tablet: reduz espaços e reordena os blocos. */
-@media(max-width:850px){.nav{gap:12px}
-.nav a{font-size:.61rem}
-.hero{grid-template-columns:1fr .85fr}
-.skills-layout{grid-template-columns:1fr}
-.projects{grid-template-columns:repeat(2,minmax(0,1fr))}
-.contact-links{grid-template-columns:1fr}
-.contact-links a{max-width:600px}}
-
-/* 13. Responsividade mobile: menu recolhível, uma coluna e botões acessíveis. */
-@media(max-width:650px){html{scroll-padding-top:70px}
-.header{width:calc(100% - 32px);min-height:66px}
-.menu-toggle{display:block}
-.nav{display:none;position:absolute;top:58px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:12px;background:#090611f7;border:1px solid var(--line);border-radius:12px}
-.nav.open{display:flex}
-.nav a{padding:12px;font-size:.75rem}
-.nav a:last-child{border-radius:8px}
-.page{width:calc(100% - 32px);padding:68px 0}
-.hero{display:flex;flex-direction:column;align-items:stretch;min-height:0;padding-top:55px;padding-bottom:75px}
-.hero h1{font-size:clamp(3.1rem,15vw,5rem)}
-.flower-stage{height:320px;margin-top:15px}
-.hero-flower-image{width:100%;height:110%}
-.hud-side{left:-4px}
-.hud-top{right:0}
-.about{grid-template-columns:1fr}
-.portrait{max-width:330px}
-.initials{aspect-ratio:5/4}
-.projects{grid-template-columns:1fr}}
-@media(max-width:390px){.actions{flex-direction:column;align-items:stretch}
-.skills{grid-template-columns:1fr}
-.terminal span{float:none;display:block;margin-top:5px}
-.flower-note{font-size:.48rem}}
-
-/* 14. Estrelas pequenas inseridas pelo JavaScript em cada seção. */
-.ambient-star{position:absolute;right:3%;top:28px;color:var(--light-magenta);font-size:13px;opacity:.7;pointer-events:none;text-shadow:0 0 12px var(--hot-pink);animation:star-pulse 3.8s ease-in-out infinite;animation-delay:var(--star-delay,0s)}
-@media(max-width:650px){.page:before{left:-8px;opacity:.35}
-.page:after{left:-13px}
-.ambient-star{right:5%;top:20px}
-#projetos:after,#contato:after{width:145px;height:170px;right:-70px;opacity:.2}
-.flower-stage{overflow:hidden}}
-
-/* 14. Tipografia delicada: Dancing Script nos títulos e Nunito nos textos longos. */
-:root{--font-body:'Nunito',sans-serif;--font-title:'Dancing Script',cursive}
-body{font-family:var(--font-body);font-size:16px}
-.brand{font-family:var(--font-title);font-size:2rem;letter-spacing:0;font-weight:700}
-.hero h1,.heading h2{font-family:var(--font-title);font-weight:600;letter-spacing:0;line-height:1.04}
-.hero h1{font-size:clamp(4rem,8vw,7rem)}
-.heading h2{font-size:clamp(2.8rem,5vw,4.1rem)}
-.project-copy h3,.panel h3,.timeline h3,.learning h3{font-family:var(--font-title);font-size:1.55rem;font-weight:600;letter-spacing:0}
-.eyebrow,.micro,.terminal,.flower-note,.flower-hud,.scroll{font-family:'DM Mono',monospace}
-
-/* 15. Biografia sem retrato: o texto ocupa uma coluna ampla e confortável. */
-.about{grid-template-columns:minmax(0,1fr);max-width:820px}
-.about-copy p{font-size:1rem;line-height:1.85}
-.edit-tip{display:none}
-
-/* 16. Flores de fundo: duas espécies diferentes, grandes, estáticas e discretas. */
-.side-flora{position:absolute;z-index:0;pointer-events:none;width:clamp(240px,32vw,470px);opacity:.15;filter:brightness(.72) saturate(.95) drop-shadow(0 0 24px #f1039324);mix-blend-mode:screen}
-.side-flora img{display:block;width:100%;height:auto;mix-blend-mode:screen}
-.side-flora-orchid{top:17%;left:-13%;transform:rotate(-17deg)}
-.side-flora-calla{top:57%;right:-13%;width:clamp(260px,34vw,500px);transform:rotate(15deg)}
-
-/* O conteúdo fica acima das flores de fundo para manter contraste e legibilidade. */
-.header,main,.footer{position:relative;z-index:1}
-
-/* 17. Linhas laterais: pequenos traços, coordenadas e estrelas com movimento parallax. */
-.edge-decor{position:absolute;top:100px;bottom:35px;width:30px;display:flex;flex-direction:column;align-items:center;justify-content:space-around;color:var(--light-magenta);opacity:.68;pointer-events:none;z-index:2;transform:translate3d(var(--move-x,0),var(--move-y,0),0);transition:transform .22s ease-out}
-.edge-left{left:8px}
-.edge-right{right:8px}
-.edge-decor i{display:block;width:1px;height:clamp(30px,7vh,76px);background:linear-gradient(transparent,#fe6ef0a8,transparent);position:relative}
-.edge-decor i:after{content:'';position:absolute;left:-3px;top:50%;width:7px;height:1px;background:var(--hot-pink);box-shadow:0 0 8px var(--hot-pink)}
-.edge-decor span{font-size:15px;text-shadow:0 0 12px var(--hot-pink);animation:edge-glimmer 4s ease-in-out infinite}
-.edge-decor b{font-size:11px;font-weight:400;opacity:.8}
-@keyframes edge-glimmer{0%,100%{opacity:.45;transform:rotate(0) scale(.85)}50%{opacity:1;transform:rotate(45deg) scale(1.15)}}
-
-/* 18. Efeito de hover: pontos e linhas do HUD reagem suavemente à posição do cursor. */
-.hero{--pointer-x:0px;--pointer-y:0px}
-.hero:after{content:'✦';position:absolute;top:16%;right:42%;color:var(--light-magenta);font-size:14px;text-shadow:0 0 12px var(--hot-pink);pointer-events:none;transform:translate3d(var(--pointer-x),var(--pointer-y),0);transition:transform .16s ease-out}
-.flower-hud,.flower-note{transition:transform .25s ease-out}
-@media(max-width:1000px){.edge-decor{opacity:.38;width:18px}
-.side-flora-orchid{left:-22%}
-.side-flora-calla{right:-23%}}
-@media(max-width:650px){
-  .brand{font-size:1.8rem}
-  .hero h1{font-size:clamp(3.8rem,16vw,5.6rem)}
-  .side-flora{width:250px;opacity:.09}
-  .side-flora-orchid{top:18%;left:-125px}
-  .side-flora-calla{top:65%;right:-130px}
-  .edge-decor{width:13px;opacity:.28;top:78px;bottom:20px}
-  .edge-left{left:1px}
-  .edge-right{right:1px}
-  .hero:after{display:none}
-  .about-copy p{font-size:.96rem}
+  /* Medidas e fontes */
+  --content: 1080px;
+  --font-body: 'Nunito', sans-serif;
+  --font-title: 'Dancing Script', cursive;
 }
-@media(prefers-reduced-motion:reduce){.edge-decor span{animation:none}
-.edge-decor,.flower-hud,.flower-note,.hero:after{transition:none}}
 
-/* 19. Elementos laterais acompanham a rolagem para decorar todo o percurso do portfólio. */
-.side-flora{position:fixed;z-index:0;top:12vh}
-.side-flora-calla{top:auto;bottom:-9vh}
-.edge-decor{position:fixed;top:78px;bottom:18px}
-.flower-stage{transform:translate3d(var(--mouse-x,0),var(--mouse-y,0),0);transition:transform .2s ease-out}
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+body:before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse at 80% 10%, #1c185933, transparent 35%),
+    radial-gradient(ellipse at 5% 60%, #44032744, transparent 34%),
+    #05030a;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p {
+  margin-top: 0;
+}
+
+::selection {
+  background: var(--lingonberries);
+  color: white;
+}
+
+code {
+  color: var(--light-magenta);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.small {
+  font-size: .68rem;
+}
+
+.pink,
+.brand:first-letter {
+  color: var(--hot-pink);
+}
+
+/* Elementos de texto pequeno em fonte monoespaçada */
+.eyebrow,
+.micro {
+  font: 500 .68rem 'DM Mono', monospace;
+  letter-spacing: .11em;
+  color: var(--light-magenta);
+  text-transform: uppercase;
+}
+
+/* Páginas: largura máxima e espaços amplos */
+.page {
+  width: min(var(--content), calc(100% - 48px));
+  margin: auto;
+  padding: clamp(68px, 9vw, 112px) 0;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+
+/* Cartões em vidro escuro */
+.panel,
+.project,
+.learning {
+  background: linear-gradient(145deg, #100a19ee, #07040cee);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 0 28px #f1039310;
+}
+
+/* Pílulas de palavras-chave */
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.pills span {
+  font-size: .7rem;
+  color: #edcce9;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background: #44032724;
+}
+
+.soft {
+  margin-top: 20px;
+}
+
+
+/* ==========================================================================
+   2. FUNDO E DECORAÇÃO
+   ========================================================================== */
+
+/* Manchas de luz suaves */
+.ambient {
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  filter: blur(115px);
+  opacity: .13;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.ambient-a {
+  right: -130px;
+  top: 10%;
+  background: var(--hot-pink);
+}
+
+.ambient-b {
+  left: -160px;
+  bottom: 5%;
+  background: var(--nightlife);
+}
+
+/* Flores de fundo: duas espécies, fixas e discretas */
+.side-flora {
+  position: fixed;
+  top: 12vh;
+  z-index: 0;
+  width: clamp(240px, 32vw, 470px);
+  opacity: .15;
+  filter: brightness(.72) saturate(.95) drop-shadow(0 0 24px #f1039324);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.side-flora img {
+  display: block;
+  width: 100%;
+  height: auto;
+  mix-blend-mode: screen;
+}
+
+.side-flora-orchid {
+  left: -13%;
+  transform: rotate(-17deg);
+}
+
+.side-flora-calla {
+  top: auto;
+  bottom: -9vh;
+  right: -13%;
+  width: clamp(260px, 34vw, 500px);
+  transform: rotate(15deg);
+}
+
+/* Linhas laterais com movimento parallax (controlado pelo JavaScript) */
+.edge-decor {
+  position: fixed;
+  top: 78px;
+  bottom: 18px;
+  width: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  color: var(--light-magenta);
+  opacity: .68;
+  pointer-events: none;
+  z-index: 2;
+  transform: translate3d(var(--move-x, 0), var(--move-y, 0), 0);
+  transition: transform .22s ease-out;
+}
+
+.edge-left {
+  left: 8px;
+}
+
+.edge-right {
+  right: 8px;
+}
+
+.edge-decor i {
+  display: block;
+  width: 1px;
+  height: clamp(30px, 7vh, 76px);
+  background: linear-gradient(transparent, #fe6ef0a8, transparent);
+  position: relative;
+}
+
+.edge-decor i:after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  top: 50%;
+  width: 7px;
+  height: 1px;
+  background: var(--hot-pink);
+  box-shadow: 0 0 8px var(--hot-pink);
+}
+
+.edge-decor span {
+  font-size: 15px;
+  text-shadow: 0 0 12px var(--hot-pink);
+  animation: edge-glimmer 4s ease-in-out infinite;
+}
+
+.edge-decor b {
+  font-size: 11px;
+  font-weight: 400;
+  opacity: .8;
+}
+
+/* Linha tracejada e estrela no canto de cada seção */
+.page:before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  top: 20px;
+  left: -13px;
+  width: 24px;
+  height: calc(100% - 40px);
+  opacity: .65;
+  background: repeating-linear-gradient(to bottom, transparent 0 28px, #f1039380 28px 29px, transparent 29px 55px);
+  mask-image: linear-gradient(to bottom, transparent, black 8%, black 88%, transparent);
+}
+
+.page:after {
+  content: "✦";
+  position: absolute;
+  top: 24px;
+  left: -20px;
+  color: var(--light-magenta);
+  font-size: 15px;
+  text-shadow: 0 0 12px var(--hot-pink);
+  pointer-events: none;
+  animation: star-pulse 3.5s ease-in-out infinite;
+}
+
+.header:after {
+  content: "✦";
+  position: absolute;
+  right: -20px;
+  bottom: -9px;
+  color: var(--hot-pink);
+  font-size: 13px;
+  text-shadow: 0 0 10px var(--hot-pink);
+  pointer-events: none;
+}
+
+#formacao:after {
+  content: "✦  ·  ✧  ·  ✦";
+  position: absolute;
+  right: 2%;
+  top: 35px;
+  color: #f103937a;
+  font: .8rem 'DM Mono', monospace;
+  letter-spacing: .6em;
+  pointer-events: none;
+}
+
+/* Estrelas inseridas pelo JavaScript em cada seção */
+.ambient-star {
+  position: absolute;
+  right: 3%;
+  top: 28px;
+  color: var(--light-magenta);
+  font-size: 13px;
+  opacity: .7;
+  pointer-events: none;
+  text-shadow: 0 0 12px var(--hot-pink);
+  animation: star-pulse 3.8s ease-in-out infinite;
+  animation-delay: var(--star-delay, 0s);
+}
+
+
+/* ==========================================================================
+   3. CABEÇALHO E NAVEGAÇÃO
+   ========================================================================== */
+.header {
+  width: min(var(--content), calc(100% - 48px));
+  margin: auto;
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Mantém o conteúdo acima das flores de fundo */
+.header,
+main,
+.footer {
+  position: relative;
+  z-index: 1;
+}
+
+.brand {
+  font-family: var(--font-title);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2.3vw, 27px);
+}
+
+.nav a {
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--muted);
+}
+
+.nav a:hover {
+  color: var(--light-magenta);
+}
+
+.nav a:last-child {
+  border: 1px solid var(--hot-pink);
+  border-radius: 30px;
+  padding: 7px 12px;
+  color: var(--text);
+}
+
+.menu-toggle {
+  display: none;
+  color: var(--light-magenta);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+
+/* ==========================================================================
+   4. INÍCIO (HERO)
+   ========================================================================== */
+.hero {
+  --pointer-x: 0px;
+  --pointer-y: 0px;
+  min-height: calc(100svh - 74px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 25px;
+  padding-top: 50px;
+  padding-bottom: 75px;
+  overflow: hidden;
+}
+
+/* Linhas finas de grade + estrela que acompanha o cursor */
+.hero:after {
+  inset: 16% 42% 24px 0;
+  font-size: 14px;
+  opacity: .45;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, transparent 4.3%, #f1039333 4.35%, transparent 4.45%),
+    linear-gradient(0deg, transparent 88%, #fe6ef033 88.1%, transparent 88.2%);
+  transform: translate3d(var(--pointer-x), var(--pointer-y), 0);
+  transition: transform .16s ease-out;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-copy:before {
+  content: "✦";
+  position: absolute;
+  top: -20px;
+  left: -24px;
+  color: var(--hot-pink);
+  font-size: 12px;
+  text-shadow: 0 0 10px var(--hot-pink);
+}
+
+.hero h1 {
+  font-family: var(--font-title);
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: 0;
+  margin: 22px 0;
+}
+
+.hero h1 span {
+  color: #d6c9e2;
+}
+
+.hero h1 em,
+h2 em {
+  font-style: normal;
+  color: var(--hot-pink);
+}
+
+.lead {
+  font-size: 1.05rem;
+  color: #d5c8df;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 11px;
+  margin: 26px 0 20px;
+}
+
+.btn {
+  padding: 11px 17px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: .8rem;
+}
+
+.btn.primary {
+  background: linear-gradient(110deg, var(--lingonberries), var(--hot-pink));
+  border-color: transparent;
+  box-shadow: 0 8px 26px #f103932b;
+}
+
+.btn:hover {
+  border-color: var(--light-magenta);
+  transform: translateY(-2px);
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  color: var(--light-magenta);
+  font-size: .8rem;
+}
+
+.terminal {
+  margin-top: 28px;
+  padding: 10px 12px;
+  border-left: 2px solid var(--hot-pink);
+  background: #100a19;
+  color: var(--muted);
+  font: .68rem 'DM Mono', monospace;
+  max-width: 390px;
+}
+
+.terminal span {
+  float: right;
+  color: var(--light-magenta);
+}
+
+.scroll {
+  position: absolute;
+  bottom: 22px;
+  left: 0;
+  color: var(--muted);
+  font: .6rem 'DM Mono', monospace;
+  letter-spacing: .1em;
+}
+
+/* Flor holográfica (images/flor-holografica.png) e HUD decorativo */
+.flower-stage {
+  height: 470px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  overflow: visible;
+  transform: translate3d(var(--mouse-x, 0), var(--mouse-y, 0), 0);
+  transition: transform .2s ease-out;
+}
+
+.flower-stage:before {
+  content: "";
+  position: absolute;
+  inset: 8% 0 0;
+  background: radial-gradient(ellipse at 50% 45%, #f1039330, transparent 65%);
+  filter: blur(20px);
+  z-index: -1;
+}
+
+.hero-flower-image {
+  position: relative;
+  z-index: 1;
+  width: min(112%, 540px);
+  height: 112%;
+  max-height: 540px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 18px #f1039350);
+  mix-blend-mode: screen;
+  animation: flower-float 7s ease-in-out infinite;
+}
+
+.flower-note {
+  position: absolute;
+  z-index: 2;
+  color: var(--light-magenta);
+  font: .57rem 'DM Mono', monospace;
+  letter-spacing: .1em;
+}
+
+.note-bottom {
+  left: 0;
+  bottom: 5%;
+}
+
+.flower-hud {
+  position: absolute;
+  z-index: 3;
+  color: #fbd5fa;
+  border: 1px solid #fe6ef055;
+  background: #05030a9c;
+  padding: 8px 10px;
+  font: .55rem 'DM Mono', monospace;
+  letter-spacing: .06em;
+  line-height: 1.7;
+  backdrop-filter: blur(5px);
+}
+
+.flower-hud span {
+  color: var(--hot-pink);
+}
+
+.flower-hud small {
+  color: var(--muted);
+  font-size: .5rem;
+}
+
+.hud-top {
+  top: 8%;
+  right: 0;
+}
+
+.hud-side {
+  left: 0;
+  top: 48%;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.flower-hud,
+.flower-note {
+  transition: transform .25s ease-out;
+}
+
+
+/* ==========================================================================
+   5. TÍTULOS E SOBRE MIM
+   ========================================================================== */
+.heading {
+  margin-bottom: 34px;
+  max-width: 700px;
+}
+
+.heading h2 {
+  font-family: var(--font-title);
+  font-size: clamp(2.8rem, 5vw, 4.1rem);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: 0;
+  margin: 8px 0 12px;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(24px, 5vw, 65px);
+  align-items: start;
+  max-width: 820px;
+}
+
+.about-copy p {
+  color: #d0c4da;
+  font-size: 1rem;
+  line-height: 1.85;
+  margin-bottom: 16px;
+}
+
+
+/* ==========================================================================
+   6. HABILIDADES
+   ========================================================================== */
+.skills-layout {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 17px;
+}
+
+.panel {
+  padding: clamp(18px, 3vw, 27px);
+}
+
+.panel h3 {
+  margin: 0 0 20px;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.skills > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px;
+  border: 1px solid #fe6ef020;
+  border-radius: 9px;
+  background: #05030a88;
+  min-width: 0;
+}
+
+.skill-icon {
+  flex: 0 0 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  background: #f103931b;
+  border-radius: 8px;
+  color: var(--light-magenta);
+  font: .75rem 'DM Mono', monospace;
+}
+
+.skills strong,
+.skills small {
+  display: block;
+}
+
+.skills strong {
+  font-size: .78rem;
+}
+
+.skills small {
+  font-size: .63rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.chart-wrap {
+  height: 230px;
+  position: relative;
+}
+
+
+/* ==========================================================================
+   7. PROJETOS
+   ========================================================================== */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.project {
+  overflow: hidden;
+  transition: transform .2s, border-color .2s;
+}
+
+.project:hover {
+  transform: translateY(-4px);
+  border-color: #fe6ef077;
+}
+
+.project-art {
+  height: 145px;
+  padding: 13px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: #090611;
+}
+
+.project-art > span {
+  color: var(--light-magenta);
+  font: .58rem 'DM Mono', monospace;
+}
+
+/* Variações de arte do cartão */
+.dashboard-art {
+  background:
+    radial-gradient(ellipse at 50% 100%, #f103933b, transparent 60%),
+    #090611;
+}
+
+.bars {
+  position: absolute;
+  inset: auto 15px 14px;
+  height: 68px;
+  display: flex;
+  align-items: end;
+  gap: 8px;
+}
+
+.bars i {
+  flex: 1;
+  height: 38%;
+  background: linear-gradient(var(--light-magenta), var(--lingonberries));
+  border-radius: 3px 3px 0 0;
+}
+
+.bars i:nth-child(2) { height: 72%; }
+.bars i:nth-child(3) { height: 53%; }
+.bars i:nth-child(4) { height: 92%; }
+.bars i:nth-child(5) { height: 64%; }
+
+.flower-art {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle, #f1039330, transparent 50%),
+    #090611;
+}
+
+.flower-art b {
+  font-size: 5rem;
+  color: var(--light-magenta);
+  text-shadow: 0 0 22px var(--hot-pink);
+  animation: spin 20s linear infinite;
+}
+
+.code-art pre {
+  margin: 12px 0 0 10%;
+  font: .75rem/1.6 'DM Mono', monospace;
+  color: #e8a4e4;
+}
+
+.project-copy {
+  padding: 17px;
+}
+
+.project-copy h3 {
+  margin: 7px 0;
+}
+
+.project-copy p:not(.micro) {
+  font-size: .75rem;
+  color: var(--muted);
+  min-height: 72px;
+}
+
+.project-copy .micro {
+  font-size: .58rem;
+  margin: 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 14px 0;
+}
+
+.tags span {
+  font-size: .61rem;
+  color: #d7c5df;
+  border: 1px solid #6850ad77;
+  background: #1c185944;
+  border-radius: 5px;
+  padding: 3px 6px;
+}
+
+.project-link {
+  font-size: .73rem;
+  color: var(--light-magenta);
+}
+
+.add-note {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  margin-top: 18px;
+  padding: 15px 18px;
+  border: 1px dashed #fe6ef055;
+  border-radius: 12px;
+}
+
+.add-note > span {
+  color: var(--hot-pink);
+  font-size: 1.4rem;
+}
+
+.add-note p {
+  margin: 0;
+  font-size: .8rem;
+}
+
+.add-note small {
+  color: var(--muted);
+}
+
+
+/* ==========================================================================
+   8. FORMAÇÃO
+   ========================================================================== */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  position: relative;
+  padding-top: 27px;
+}
+
+.timeline:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 8px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--hot-pink), transparent);
+}
+
+.timeline article {
+  position: relative;
+  padding-right: 12px;
+}
+
+.dot {
+  position: absolute;
+  top: -25px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--hot-pink);
+  border-radius: 50%;
+  background: var(--bg);
+  box-shadow: 0 0 12px #f1039380;
+}
+
+.timeline h3 {
+  margin: 8px 0;
+}
+
+.timeline .micro {
+  margin-bottom: 5px;
+}
+
+.timeline article > p:last-child,
+.learning p:last-child {
+  font-size: .76rem;
+  color: var(--muted);
+}
+
+.learning {
+  display: flex;
+  gap: 17px;
+  padding: 21px;
+  margin-top: 28px;
+}
+
+.learning > span {
+  font-size: 1.5rem;
+  color: var(--hot-pink);
+}
+
+.learning .micro {
+  margin-bottom: 5px;
+}
+
+.learning h3 {
+  margin-bottom: 7px;
+}
+
+/* Fonte dos títulos de cartão */
+.project-copy h3,
+.panel h3,
+.timeline h3,
+.learning h3 {
+  font-family: var(--font-title);
+  font-size: 1.55rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+
+/* ==========================================================================
+   9. CERTIFICADOS
+   ========================================================================== */
+.certificado_titulo {
+  font-family: var(--font-title);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.04;
+  text-align: center;
+}
+
+/* Setas de navegação */
+.setas-certificados {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin: 0 4px 12px;
+}
+
+.setas-certificados button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid #F10393;
+  border-radius: 50%;
+  background: rgba(241, 3, 147, 0.08);
+  color: #FE6EF0;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.setas-certificados button:hover {
+  background: #F10393;
+  color: #fff;
+  transform: scale(1.08);
+}
+
+/* Carrossel */
+.certificados-carrossel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 8px 3px 22px;
+  scrollbar-width: thin;
+  scrollbar-color: #F10393 #211329;
+}
+
+.certificados-carrossel::-webkit-scrollbar {
+  height: 6px;
+}
+
+.certificados-carrossel::-webkit-scrollbar-track {
+  background: #211329;
+  border-radius: 10px;
+}
+
+.certificados-carrossel::-webkit-scrollbar-thumb {
+  background: #F10393;
+  border-radius: 10px;
+}
+
+/* Cartão de certificado */
+.certificado-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 0 0 calc((100% - 40px) / 3);
+  min-width: 0;
+  min-height: 245px;
+  padding: 25px;
+  overflow-wrap: anywhere;
+  border: 1px solid rgba(241, 3, 147, 0.35);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at top right, rgba(126, 45, 170, 0.18), transparent 55%),
+    rgba(20, 12, 30, 0.85);
+  scroll-snap-align: start;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.certificado-card:hover {
+  border-color: #FE6EF0;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(241, 3, 147, 0.12);
+}
+
+.certificado-numero {
+  color: rgba(254, 110, 240, 0.6);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+}
+
+.certificado-categoria {
+  margin-top: 22px;
+  color: #FE6EF0;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.certificado-card h4 {
+  margin: 12px 0;
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+
+.certificado-instituicao {
+  color: #b9a9c8;
+  font-size: 0.9rem;
+  margin-bottom: 22px;
+}
+
+.certificado-link {
+  display: inline-block;
+  margin-top: auto;
+  color: #FE6EF0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.certificado-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+
+/* ==========================================================================
+   10. CONTATO E RODAPÉ
+   ========================================================================== */
+.contact {
+  min-height: 450px;
+}
+
+.contact-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.contact-links a {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #0c0812;
+}
+
+.contact-links a:hover {
+  border-color: var(--hot-pink);
+}
+
+.contact-links a > span {
+  font-size: 1.25rem;
+  color: var(--light-magenta);
+}
+
+.contact-links b {
+  font-size: .78rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-links small {
+  display: block;
+  font-weight: 400;
+  color: var(--muted);
+  font-size: .65rem;
+  overflow-wrap: anywhere;
+}
+
+.contact-links strong {
+  color: var(--hot-pink);
+}
+
+.footer {
+  width: min(var(--content), calc(100% - 48px));
+  margin: auto;
+  padding: 24px 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  color: var(--muted);
+  font-size: .68rem;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer .brand {
+  font-size: 1rem;
+}
+
+
+/* ==========================================================================
+   11. ANIMAÇÕES
+   ========================================================================== */
+@keyframes flower-float {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50%      { transform: translateY(-9px) rotate(1deg); }
+}
+
+@keyframes star-pulse {
+  0%, 100% { opacity: .5; transform: scale(.9); }
+  50%      { opacity: 1; transform: scale(1.18); }
+}
+
+@keyframes edge-glimmer {
+  0%, 100% { opacity: .45; transform: rotate(0) scale(.85); }
+  50%      { opacity: 1; transform: rotate(45deg) scale(1.15); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* ==========================================================================
+   12. RESPONSIVIDADE
+   ========================================================================== */
+
+/* Telas médias */
+@media (max-width: 1000px) {
+  .edge-decor {
+    opacity: .38;
+    width: 18px;
+  }
+
+  .side-flora-orchid {
+    left: -22%;
+  }
+
+  .side-flora-calla {
+    right: -23%;
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .certificado-card {
+    flex-basis: calc((100% - 20px) / 2);
+  }
+}
+
+@media (max-width: 850px) {
+  .nav {
+    gap: 12px;
+  }
+
+  .nav a {
+    font-size: .61rem;
+  }
+
+  .hero {
+    grid-template-columns: 1fr .85fr;
+  }
+
+  .skills-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-links {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-links a {
+    max-width: 600px;
+  }
+}
+
+/* Celular: menu recolhível, uma coluna e botões acessíveis */
+@media (max-width: 650px) {
+  html {
+    scroll-padding-top: 70px;
+  }
+
+  .header {
+    width: calc(100% - 32px);
+    min-height: 66px;
+  }
+
+  .brand {
+    font-size: 1.8rem;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 58px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 12px;
+    background: #090611f7;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .nav a {
+    padding: 12px;
+    font-size: .75rem;
+  }
+
+  .nav a:last-child {
+    border-radius: 8px;
+  }
+
+  .page {
+    width: calc(100% - 32px);
+    padding: 68px 0;
+  }
+
+  .page:before {
+    left: -8px;
+    opacity: .35;
+  }
+
+  .page:after {
+    left: -13px;
+  }
+
+  .ambient-star {
+    right: 5%;
+    top: 20px;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    padding-top: 55px;
+    padding-bottom: 75px;
+  }
+
+  .hero:after {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.8rem, 16vw, 5.6rem);
+  }
+
+  .flower-stage {
+    height: 320px;
+    margin-top: 15px;
+    overflow: hidden;
+  }
+
+  .hero-flower-image {
+    width: 100%;
+    height: 110%;
+  }
+
+  .hud-side {
+    left: -4px;
+  }
+
+  .hud-top {
+    right: 0;
+  }
+
+  .about-copy p {
+    font-size: .96rem;
+  }
+
+  .projects {
+    grid-template-columns: 1fr;
+  }
+
+  .side-flora {
+    width: 250px;
+    opacity: .09;
+  }
+
+  .side-flora-orchid {
+    left: -125px;
+  }
+
+  .side-flora-calla {
+    right: -130px;
+  }
+
+  .edge-decor {
+    width: 13px;
+    opacity: .28;
+  }
+
+  .edge-left {
+    left: 1px;
+  }
+
+  .edge-right {
+    right: 1px;
+  }
+
+  .certificado-card {
+    flex-basis: 85%;
+    padding: 20px;
+  }
+}
+
+/* Celulares pequenos */
+@media (max-width: 390px) {
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .skills {
+    grid-template-columns: 1fr;
+  }
+
+  .terminal span {
+    float: none;
+    display: block;
+    margin-top: 5px;
+  }
+
+  .flower-note {
+    font-size: .48rem;
+  }
+}
+
+/* Respeita a preferência por movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *:before,
+  *:after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+
+  .edge-decor span {
+    animation: none;
+  }
+
+  .edge-decor,
+  .flower-hud,
+  .flower-note,
+  .hero:after {
+    transition: none;
+  }
+}:translate3d(var(--mouse-x,0),var(--mouse-y,0),0);transition:transform .2s ease-out}
