@@ -24,7 +24,7 @@ if (canvas && window.Chart) {
   new Chart(canvas, {
     type: "doughnut",
     data: {
-      labels: ["Dados", "Programação", "Web", "Outros"],
+      labels: ["Dados e Sustentabilidade", "Machine Learning", "Programação", "Outros"],
       datasets: [{
         data: [40, 30, 20, 10],
         backgroundColor: ["#F10393", "#FE6EF0", "#8B0535", "#1C1859"],
