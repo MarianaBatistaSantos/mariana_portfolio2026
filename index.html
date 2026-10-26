@@ -1,123 +1,503 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#05030a">
   <title>Mariana Batista dos Santos | Portfólio</title>
+
+  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=DM+Mono:wght@400;500&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Estilos e scripts -->
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
   <script src="script.js" defer></script>
 </head>
+
 <body>
-  <!-- Fundo: luzes suaves e flores holográficas decorativas nas bordas da página. -->
+
+  <!-- ===== DECORAÇÃO DE FUNDO ===== -->
   <div class="ambient ambient-a" aria-hidden="true"></div>
   <div class="ambient ambient-b" aria-hidden="true"></div>
-  <div class="side-flora side-flora-orchid" aria-hidden="true">
-    <img src="images/orquidea-holografica.png" alt=""></div>
-  <div class="side-flora side-flora-calla" aria-hidden="true">
-    <img src="images/cala-holografica.png" alt=""></div>
-  <!-- Linhas técnicas e estrelas laterais com movimento discreto controlado pelo cursor. -->
-  <div class="edge-decor edge-left" aria-hidden="true"><span>✦</span><i></i><b>✧</b><i></i><span>✦</span><i></i><b>✧</b></div>
-  <div class="edge-decor edge-right" aria-hidden="true"><b>✧</b><i></i><span>✦</span><i></i><b>✧</b><i></i><span>✦</span></div>
 
-  <!-- Cabeçalho: marca e menu responsivo. -->
+  <div class="side-flora side-flora-orchid" aria-hidden="true">
+    <img src="images/orquidea-holografica.png" alt="">
+  </div>
+  <div class="side-flora side-flora-calla" aria-hidden="true">
+    <img src="images/cala-holografica.png" alt="">
+  </div>
+
+  <div class="edge-decor edge-left" aria-hidden="true">
+    <span>✦</span><i></i><b>✧</b><i></i><span>✦</span><i></i><b>✧</b>
+  </div>
+  <div class="edge-decor edge-right" aria-hidden="true">
+    <b>✧</b><i></i><span>✦</span><i></i><b>✧</b><i></i><span>✦</span>
+  </div>
+
+
+  <!-- ===== CABEÇALHO ===== -->
   <header class="header">
     <a class="brand" href="#inicio"><span>✦</span> mariana<span class="pink">_</span></a>
+
     <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="nav">☰</button>
+
     <nav id="nav" class="nav">
-      <a href="#inicio">Início</a><a href="#sobre">Sobre mim</a><a href="#habilidades">Habilidades</a><a href="#projetos">Projetos</a><a href="#formacao">Formação</a><a href="#contato">Contato ↗</a>
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre mim</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#formacao">Formação</a>
+      <a href="#contato">Contato ↗</a>
     </nav>
   </header>
 
+
   <main>
-    <!-- Página 1: apresentação objetiva, links sociais e flor holográfica decorativa. -->
+
+    <!-- ===== INÍCIO ===== -->
     <section class="page hero" id="inicio">
       <div class="hero-copy">
         <p class="eyebrow">✦ PORTFÓLIO · DADOS & TECNOLOGIA</p>
+
         <h1>Mariana<br><span>Batista dos</span><br><em>Santos.</em></h1>
-        <p class="lead">Transformando dados em decisões.<br>Unindo tecnologia, criatividade e impacto real.</p>
-        <div class="actions"><a class="btn primary" href="#projetos">Explorar projetos ↘</a><a class="btn" href="#sobre">Sobre mim</a></div>
-        <div class="social"><a href="https://github.com/MarianaBatistaSantos" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="mailto:seuemail@exemplo.com">E-mail ↗</a></div>
+
+        <p class="lead">
+          Transformando dados em decisões.<br>
+          Unindo tecnologia, criatividade e impacto real.
+        </p>
+
+        <div class="actions">
+          <a class="btn primary" href="#projetos">Explorar projetos ↘</a>
+          <a class="btn" href="#sobre">Sobre mim</a>
+        </div>
+
+        <div class="social">
+          <a href="https://github.com/MarianaBatistaSantos" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <a href="mailto:seuemail@exemplo.com">E-mail ↗</a>
+        </div>
+
         <p class="terminal">› build: sonhos, projetos, futuro <span>✦ em andamento</span></p>
       </div>
+
       <div class="flower-stage" aria-label="Ilustração de flores holográficas em rosa neon" role="img">
-        <!-- Ilustração floral gerada para este portfólio; mantenha o arquivo em images/flor-holografica.png. -->
         <img class="hero-flower-image" src="images/flor-holografica.png" alt="" aria-hidden="true">
-        <div class="flower-hud hud-top">BOTANICAL.EXE <span>✦</span> 001<br><small>SPECIMEN / HOLOGRAM</small></div>
-        <div class="flower-hud hud-side">FLORA DATA<br>01 — 05 — 25</div>
+
+        <div class="flower-hud hud-top">
+          BOTANICAL.EXE <span>✦</span> 001<br>
+          <small>SPECIMEN / HOLOGRAM</small>
+        </div>
+        <div class="flower-hud hud-side">
+          FLORA DATA<br>
+          01 — 05 — 25
+        </div>
         <span class="flower-note note-bottom">GROWTH IN PROGRESS ✦</span>
       </div>
+
       <a class="scroll" href="#sobre">ROLE PARA DESCOBRIR ↓</a>
     </section>
 
-    <!-- Página 2: biografia e espaço reservado para retrato e interesses pessoais. -->
+
+    <!-- ===== SOBRE MIM ===== -->
     <section class="page" id="sobre">
-      <div class="heading"><p class="eyebrow">✦ 01 / QUEM SOU</p><h2>Sobre <em>mim.</em></h2><p class="muted">Curiosidade, lógica e criatividade no mesmo lugar.</p></div>
+      <div class="heading">
+        <p class="eyebrow">✦ 01 / QUEM SOU</p>
+        <h2>Sobre <em>mim.</em></h2>
+        <p class="muted">Curiosidade, lógica e criatividade no mesmo lugar.</p>
+      </div>
+
       <div class="about">
         <div class="about-copy">
-          <p>Olá! Sou estudante de <strong>Análise e Desenvolvimento de Sistemas na PUCPR (EAD)</strong> e tenho interesse em transformar problemas em soluções úteis por meio da tecnologia.</p>
-          <p>Estou desenvolvendo minhas habilidades em análise de dados, programação e visualização de informações. Gosto de aprender na prática, explorar ferramentas e construir projetos com propósito.</p>
-          <p>Este portfólio é um espaço para compartilhar minha evolução, meus estudos e os projetos que desenvolvo ao longo da jornada.</p>
-          <div class="pills"><span>✦ Dados</span><span>✦ Tecnologia</span><span>✦ Sustentabilidade</span><span>✦ Aprendizado contínuo</span></div>
-          <p class="edit-tip">Personalize este texto com suas experiências, metas e interesses reais.</p>
+          <p>
+            Olá! Sou estudante de <strong>Análise e Desenvolvimento de Sistemas na PUCPR (EAD)</strong>
+            e tenho interesse em transformar problemas em soluções úteis por meio da tecnologia.
+          </p>
+          <p>
+            Estou desenvolvendo minhas habilidades em análise de dados, programação e visualização de informações.
+            Gosto de aprender na prática, explorar ferramentas e construir projetos com propósito.
+          </p>
+          <p>
+            Este portfólio é um espaço para compartilhar minha evolução, meus estudos e os projetos que desenvolvo
+            ao longo da jornada.
+          </p>
+
+          <div class="pills">
+            <span>✦ Dados</span>
+            <span>✦ Tecnologia</span>
+            <span>✦ Sustentabilidade</span>
+            <span>✦ Aprendizado contínuo</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Página 3: habilidades agrupadas e gráfico demonstrativo interativo. -->
+
+    <!-- ===== HABILIDADES ===== -->
     <section class="page" id="habilidades">
-      <div class="heading"><p class="eyebrow">✦ 02 / CAIXA DE FERRAMENTAS</p><h2>Habilidades em <em>construção.</em></h2><p class="muted">Edite esta lista conforme ganhar prática e experiência.</p></div>
+      <div class="heading">
+        <p class="eyebrow">✦ 02 / CAIXA DE FERRAMENTAS</p>
+        <h2>Habilidades em <em>construção.</em></h2>
+      </div>
+
       <div class="skills-layout">
-        <div class="panel"><h3>Programação & dados</h3><div class="skills">
-          <div><b class="skill-icon">Py</b><span><strong>Python</strong><small>Fundamentos e prática</small></span></div>
-          <div><b class="skill-icon">SQL</b><span><strong>SQL</strong><small>Consultas e dados</small></span></div>
-          <div><b class="skill-icon">BI</b><span><strong>Power BI</strong><small>Em desenvolvimento</small></span></div>
-          <div><b class="skill-icon">Ex</b><span><strong>Excel</strong><small>Análise e organização</small></span></div>
-          <div><b class="skill-icon">Ja</b><span><strong>Java</strong><small>POO e lógica</small></span></div>
-          <div><b class="skill-icon">&lt;/&gt;</b><span><strong>HTML & CSS</strong><small>Interfaces responsivas</small></span></div>
-        </div></div>
-        <div class="panel"><p class="micro">VISÃO GERAL · DEMO</p><h3>Meu foco de estudos</h3><div class="chart-wrap"><canvas id="focusChart" aria-label="Gráfico de foco de estudos ilustrativo"></canvas></div><p class="muted small">Dados ilustrativos. Edite os valores no arquivo script.js.</p></div>
+        <div class="panel">
+          <h3>Programação & dados</h3>
+          <div class="skills">
+            <div>
+              <b class="skill-icon">Py</b>
+              <span><strong>Python</strong><small>Fundamentos e prática</small></span>
+            </div>
+            <div>
+              <b class="skill-icon">SQL</b>
+              <span><strong>SQL</strong><small>Consultas e dados</small></span>
+            </div>
+            <div>
+              <b class="skill-icon">BI</b>
+              <span><strong>Power BI</strong><small>Em desenvolvimento</small></span>
+            </div>
+            <div>
+              <b class="skill-icon">Ex</b>
+              <span><strong>Excel</strong><small>Análise e organização</small></span>
+            </div>
+            <div>
+              <b class="skill-icon">Ja</b>
+              <span><strong>Java</strong><small>POO e lógica</small></span>
+            </div>
+            <div>
+              <b class="skill-icon">&lt;/&gt;</b>
+              <span><strong>HTML & CSS</strong><small>Interfaces responsivas</small></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <p class="micro">VISÃO GERAL · DEMO</p>
+          <h3>Meu foco de estudos</h3>
+          <div class="chart-wrap">
+            <canvas id="focusChart" aria-label="Gráfico de foco de estudos ilustrativo"></canvas>
+          </div>
+          <p class="muted small">Dados ilustrativos. Edite os valores no arquivo script.js.</p>
+        </div>
       </div>
-      <div class="pills soft"><span>✦ Resolução de problemas</span><span>✦ Pensamento analítico</span><span>✦ Comunicação</span><span>✦ Aprendizado contínuo</span></div>
+
+      <div class="pills soft">
+        <span>✦ Resolução de problemas</span>
+        <span>✦ Pensamento analítico</span>
+        <span>✦ Comunicação</span>
+        <span>✦ Aprendizado contínuo</span>
+      </div>
     </section>
 
-    <!-- Página 4: projetos em cartões independentes, fáceis de duplicar e personalizar. -->
+
+    <!-- ===== PROJETOS ===== -->
     <section class="page" id="projetos">
-      <div class="heading"><p class="eyebrow">✦ 03 / LABORATÓRIO</p><h2>Projetos <em>selecionados.</em></h2><p class="muted">Troque os exemplos pelos seus trabalhos reais e adicione links para demonstrações ou repositórios.</p></div>
+      <div class="heading">
+        <p class="eyebrow">✦ 03 / LABORATÓRIO</p>
+        <h2>Projetos <em>selecionados.</em></h2>
+      </div>
+
       <div class="projects">
-        <article class="project"><div class="project-art dashboard-art"><span>DATA / 001</span><div class="bars"><i></i><i></i><i></i><i></i><i></i></div></div><div class="project-copy"><p class="micro">DADOS · EXCEL / POWER BI</p><h3>Dashboard de análise</h3><p>Descreva o problema analisado, os dados utilizados e as principais descobertas.</p><div class="tags"><span>Excel</span><span>Power BI</span><span>SQL</span></div><a href="#" class="project-link">Adicionar link ↗</a></div></article>
-        <article class="project"><div class="project-art flower-art"><span>WEB / 002</span><b>✿</b></div><div class="project-copy"><p class="micro">DESENVOLVIMENTO WEB</p><h3>Portfólio responsivo</h3><p>Apresente o objetivo do site, os recursos implementados e o que você aprendeu.</p><div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div><a href="#" class="project-link">Adicionar link ↗</a></div></article>
-        <article class="project"><div class="project-art code-art"><span>JAVA / 003</span><pre>class Projeto {<br>  aprender() {<br>    return "evoluir";<br>  }<br>}</pre></div><div class="project-copy"><p class="micro">PROGRAMAÇÃO</p><h3>Sistema em Java</h3><p>Explique as funcionalidades, os conceitos aplicados e os desafios resolvidos.</p><div class="tags"><span>Java</span><span>POO</span><span>Git</span></div><a href="#" class="project-link">Adicionar link ↗</a></div></article>
+
+        <!-- Projeto 1 -->
+        <article class="project">
+          <div class="project-art dashboard-art">
+            <span>DATA / 001</span>
+            <div class="bars"><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="project-copy">
+            <p class="micro">DADOS · EXCEL / POWER BI</p>
+            <h3>Dashboard de análise</h3>
+            <p>Descreva o problema analisado, os dados utilizados e as principais descobertas.</p>
+            <div class="tags"><span>Excel</span><span>Power BI</span><span>SQL</span></div>
+            <a href="#" class="project-link">Adicionar link ↗</a>
+          </div>
+        </article>
+
+        <!-- Projeto 2 -->
+        <article class="project">
+          <div class="project-art flower-art">
+            <span>WEB / 002</span>
+            <b>✿</b>
+          </div>
+          <div class="project-copy">
+            <p class="micro">DESENVOLVIMENTO WEB</p>
+            <h3>Portfólio responsivo</h3>
+            <p>Apresente o objetivo do site, os recursos implementados e o que você aprendeu.</p>
+            <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            <a href="#" class="project-link">Adicionar link ↗</a>
+          </div>
+        </article>
+
+        <!-- Projeto 3 -->
+        <article class="project">
+          <div class="project-art code-art">
+            <span>JAVA / 003</span>
+            <pre>class Projeto {<br>  aprender() {<br>    return "evoluir";<br>  }<br>}</pre>
+          </div>
+          <div class="project-copy">
+            <p class="micro">PROGRAMAÇÃO</p>
+            <h3>Sistema em Java</h3>
+            <p>Explique as funcionalidades, os conceitos aplicados e os desafios resolvidos.</p>
+            <div class="tags"><span>Java</span><span>POO</span><span>Git</span></div>
+            <a href="#" class="project-link">Adicionar link ↗</a>
+          </div>
+        </article>
+
       </div>
-      <div class="add-note"><span>✦</span><p><strong>Seu próximo projeto começa aqui.</strong><br><small>Duplique um cartão <code>&lt;article class="project"&gt;</code> no index.html para adicionar mais.</small></p></div>
+
+      <div class="add-note">
+        <span>✦</span>
+        <p>
+          <strong>Seu próximo projeto começa aqui.</strong><br>
+          <small>Duplique um cartão <code>&lt;article class="project"&gt;</code> no index.html para adicionar mais.</small>
+        </p>
+      </div>
     </section>
 
-    <!-- Página 5: formação e experiências organizadas em uma linha do tempo. -->
+
+    <!-- ===== FORMAÇÃO ===== -->
     <section class="page" id="formacao">
-      <div class="heading"><p class="eyebrow">✦ 04 / TRAJETÓRIA</p><h2>Formação & <em>experiências.</em></h2><p class="muted">Registre estudos, certificados, intercâmbios e projetos relevantes.</p></div>
-      <div class="timeline">
-        <article><span class="dot"></span><p class="micro">2024</p><h3>Intercâmbio — Nova Scotia, Canadá</h3><p>Experiência internacional de estudos e imersão na língua inglesa.</p></article>
-        <article><span class="dot"></span><p class="micro">2025 — atual</p><h3>ADS — PUCPR (EAD)</h3><p>Estudos em análise e desenvolvimento de sistemas, programação e tecnologia.</p></article>
-        <article><span class="dot"></span><p class="micro">EM ANDAMENTO</p><h3>Projetos independentes</h3><p>Prática com ferramentas de dados, programação e construção de portfólio.</p></article>
+      <div class="heading">
+        <p class="eyebrow">✦ 04 / TRAJETÓRIA</p>
+        <h2>Formação & <em>experiências.</em></h2>
       </div>
-      <div class="learning"><span>✦</span><div><p class="micro">PRÓXIMO OBJETIVO</p><h3>Transformar aprendizado em experiência real.</h3><p>Adicione cursos, certificados, trabalhos voluntários ou freelance quando tiver informações verificáveis para apresentar.</p></div></div>
+
+      <div class="timeline">
+        <article>
+          <span class="dot"></span>
+          <p class="micro">2024</p>
+          <h3>Intercâmbio — Nova Scotia, Canadá</h3>
+          <p>Experiência internacional de estudos e imersão na língua inglesa.</p>
+        </article>
+        <article>
+          <span class="dot"></span>
+          <p class="micro">2026 — atual</p>
+          <h3>ADS — PUCPR (EAD)</h3>
+          <p>Estudos em análise e desenvolvimento de sistemas, programação e tecnologia.</p>
+        </article>
+        <article>
+          <span class="dot"></span>
+          <p class="micro">EM ANDAMENTO</p>
+          <h3>Projetos independentes</h3>
+          <p>Prática com ferramentas de dados e programação.</p>
+        </article>
+      </div>
+
+      <div class="learning">
+        <span>✦</span>
+        <div>
+          <p class="micro">PRÓXIMO OBJETIVO</p>
+          <h3>Transformar aprendizado em experiência real.</h3>
+        </div>
+      </div>
     </section>
 
-    <!-- Página 6: contato com atalhos grandes e fáceis de usar em telas pequenas. -->
+
+    <!-- ===== CERTIFICADOS ===== -->
+    <h1 class="certificado_titulo">✦ Certificados ✦</h1>
+
+    <div class="setas-certificados">
+      <button type="button" id="seta-cert-anterior" aria-label="Voltar certificados">‹</button>
+      <button type="button" id="seta-cert-proximo" aria-label="Avançar certificados">›</button>
+    </div>
+
+    <div class="certificados-carrossel" id="certificados-carrossel">
+
+      <article class="certificado-card">
+        <span class="certificado-numero">01</span>
+        <span class="certificado-categoria">Acessibilidade</span>
+        <h4>Acessibilidade na Web</h4>
+        <p class="certificado-instituicao">Alura</p>
+        <a href="certificados/Acessibilidade%20na%20Web_certificado.pdf" target="_blank" rel="noopener noreferrer" class="certificado-link">Ver certificado ↗</a>
+      </article>
+
+      <article class="certificado-card">
+        <span class="certificado-numero">02</span>
+        <span class="certificado-categoria">Desenvolvimento web</span>
+        <h4>Agrinho 2025 — Categoria HTML e CSS</h4>
+        <p class="certificado-instituicao">Certificado de participação</p>
+        <a href="certificados/Agrinho%202025%20-%20Categoria%20HTML%20e%20CSS_certificado.pdf" target="_blank" rel="noopener noreferrer" class="certificado-link">Ver certificado ↗</a>
+      </article>
+
+      <article class="certificado-card">
+        <span class="certificado-numero">03</span>
+        <span class="certificado-categoria">Python e dados</span>
+        <h4>Ciência de dados construindo uma análise de dados com Python</h4>
+        <p class="certificado-instituicao">Alura</p>
+        <a href="certificados/Ciencia%20de%20dados%20construindo%20uma%20analise%20de%20dados%20com%20Python_certificado.pdf" target="_blank" rel="noopener noreferrer" class="certificado-link">Ver certificado ↗</a>
+      </article>
+
+      <article class="certificado-card">
+        <span class="certificado-numero">04</span>
+        <span class="certificado-categoria">Carreira</span>
+        <h4>Conectando-se ao Mundo Profissional</h4>
+        <p class="certificado-instituicao">Alura</p>
+        <a href="certificados/Conectando-se%20ao%20Mundo%20Profissional_certificado.pdf" target="_blank" rel="noopener noreferrer" class="certificado-link">Ver certificado ↗</a>
+      </article>
+
+      <article class="certificado-card">
+        <span class="certificado-numero">05</span>
+        <span class="certificado-categoria">Inteligência artificial</span>
+        <h4>Funções criando uma missão sobre Inteligência Artificial</h4>
+        <p class="certificado-instituicao">Alura</p>
+        <a href="certificados/Funcoes%20criando%20uma%20missao%20sobre%20Intelig%C3%AAncia%20Artificial_certificado.pdf" target="_blank" rel="noopener noreferrer" class="certificado-link">Ver certificado ↗</a>
+      </article>
+
+      <article class="certificado-card">
+        <span class="certificado-numero">06</span>
+        <span class="certificado-categoria">Git e GitHub</span>
+        <h4>GitHub compartilhando seus projetos</h4>
+        <p class="certificado-instituicao">Alura</p>
+        <a href="certificados/Github%20compartilhando%20seus%20projetos_certificado.pdf" target="_blank" rel="noopener noreferrer" class="certificado-link">Ver certificado ↗</a>
+      </article>
+
+      <article class="certificado-card">
+        <span class="certificado-numero">07</span>
+        <span class="certificado-categoria">Desenvolvimento web</span>
+        <h4>HTML5 e CSS3 — Parte 1</h4>
+        <p class="certificado-instituicao">Alura</p>
+        <a href="certificados/HTML5%20e%20CSS3%20parte%201_certificado.pdf" target="_blank" rel="noopener noreferrer" class="certificado-link">Ver certificado ↗</a>
+      </article>
+
+      <article class="certificado-card">
+        <span class="certificado-numero">08</span>
+        <span class="certificado-categoria">Desenvolvimento web</span>
+        <h4>HTML5 e CSS3 — Parte 2</h4>
+        <p class="certificado-instituicao">Alura</p>
+        <a href="certificados/HTML5%20e%20CSS3%20parte%202_certificado.pdf" target="_blank" rel="noopener noreferrer" class="certificado-link">Ver certificado ↗</a>
+      </article>
+
+      <article class="certificado-card">
+        <span class="certificado-numero">09</span>
+        <span class="certificado-categoria">Desenvolvimento web</span>
+        <h4>HTML5 e CSS3 — Parte 3</h4>
+        <p class="certificado-instituicao">Alura</p>
+        <a href="certificados/HTML5%20e%20CSS3%20parte%203_certificado.pdf" target="_blank" rel="noopener noreferrer" class="certificado-link">Ver certificado ↗</a>
+      </article>
+
+      <article class="certificado-card">
+        <span class="certificado-numero">10</span>
+        <span class="certificado-categoria">Lógica de programação</span>
+        <h4>Introdução à computação</h4>
+        <p class="certificado-instituicao">Alura</p>
+        <a href="certificados/Introducao%20a%20computacao_certificado.pdf" target="_blank" rel="noopener noreferrer" class="certificado-link">Ver certificado ↗</a>
+      </article>
+
+      <article class="certificado-card">
+        <span class="certificado-numero">11</span>
+        <span class="certificado-categoria">Python</span>
+        <h4>Introdução ao Python</h4>
+        <p class="certificado-instituicao">Alura</p>
+        <a href="certificados/Introducao%20a%20python_certificado.pdf" target="_blank" rel="noopener noreferrer" class="certificado-link">Ver certificado ↗</a>
+      </article>
+
+      <article class="certificado-card">
+        <span class="certificado-numero">12</span>
+        <span class="certificado-categoria">JavaScript</span>
+        <h4>Introdução ao JavaScript</h4>
+        <p class="certificado-instituicao">Alura</p>
+        <a href="certificados/Introducao%20ao%20JavaScript_certificado.pdf" target="_blank" rel="noopener noreferrer" class="certificado-link">Ver certificado ↗</a>
+      </article>
+
+      <article class="certificado-card">
+        <span class="certificado-numero">13</span>
+        <span class="certificado-categoria">Lógica de programação</span>
+        <h4>Lógica de programação</h4>
+        <p class="certificado-instituicao">Alura</p>
+        <a href="certificados/Logica%20de%20programacao_certificado.pdf" target="_blank" rel="noopener noreferrer" class="certificado-link">Ver certificado ↗</a>
+      </article>
+
+      <article class="certificado-card">
+        <span class="certificado-numero">14</span>
+        <span class="certificado-categoria">Desenvolvimento web</span>
+        <h4>Página web</h4>
+        <p class="certificado-instituicao">Alura</p>
+        <a href="certificados/Pagina%20web_certificado.pdf" target="_blank" rel="noopener noreferrer" class="certificado-link">Ver certificado ↗</a>
+      </article>
+
+      <article class="certificado-card">
+        <span class="certificado-numero">15</span>
+        <span class="certificado-categoria">Desenvolvimento pessoal</span>
+        <h4>Projeto de vida</h4>
+        <p class="certificado-instituicao">Certificado de conclusão</p>
+        <a href="certificados/Projeto%20de%20vida_certificado.pdf" target="_blank" rel="noopener noreferrer" class="certificado-link">Ver certificado ↗</a>
+      </article>
+
+      <article class="certificado-card">
+        <span class="certificado-numero">16</span>
+        <span class="certificado-categoria">Programação criativa</span>
+        <h4>Scratch: Programação, Ciência e Arte</h4>
+        <p class="certificado-instituicao">Certificado de conclusão</p>
+        <a href="certificados/Scratch%20Programacao%2C%20Ciencia%20e%20Arte_certificado.pdf" target="_blank" rel="noopener noreferrer" class="certificado-link">Ver certificado ↗</a>
+      </article>
+
+      <article class="certificado-card">
+        <span class="certificado-numero">17</span>
+        <span class="certificado-categoria">Programação criativa</span>
+        <h4>Scratch</h4>
+        <p class="certificado-instituicao">Certificado de conclusão</p>
+        <a href="certificados/Scratch_certificado.pdf" target="_blank" rel="noopener noreferrer" class="certificado-link">Ver certificado ↗</a>
+      </article>
+
+      <article class="certificado-card">
+        <span class="certificado-numero">18</span>
+        <span class="certificado-categoria">Segurança</span>
+        <h4>Segurança digital</h4>
+        <p class="certificado-instituicao">Certificado de conclusão</p>
+        <a href="certificados/Seguranca%20digital_certificado.pdf" target="_blank" rel="noopener noreferrer" class="certificado-link">Ver certificado ↗</a>
+      </article>
+
+      <article class="certificado-card">
+        <span class="certificado-numero">19</span>
+        <span class="certificado-categoria">Tecnologia</span>
+        <h4>Técnicas computacionais</h4>
+        <p class="certificado-instituicao">Certificado de conclusão</p>
+        <a href="certificados/Tecnicas%20computacionais_certificado.pdf" target="_blank" rel="noopener noreferrer" class="certificado-link">Ver certificado ↗</a>
+      </article>
+
+    </div>
+
+
+    <!-- ===== CONTATO ===== -->
     <section class="page contact" id="contato">
-      <div class="heading"><p class="eyebrow">✦ 05 / CONEXÕES</p><h2>Vamos construir<br><em>algo interessante?</em></h2><p class="muted">Aberta a oportunidades de aprendizado, projetos e conexões profissionais.</p></div>
+      <div class="heading">
+        <p class="eyebrow">✦ 05 / CONEXÕES</p>
+        <h2>Vamos construir<br><em>algo interessante?</em></h2>
+        <p class="muted">Aberta a oportunidades de aprendizado, projetos e conexões profissionais.</p>
+      </div>
+
       <div class="contact-links">
-        <a href="mailto:mariana.batista.santos29@gmail.com"><span>✉</span><b>Me envie um e-mail<small>mariana.batista.santos29@gmail.com</small></b><strong>↗</strong></a>
-        <a href="https://github.com/MarianaBatistaSantos" target="_blank" rel="noreferrer"><span>⌘</span><b>GitHub<small>Projetos e código</small></b><strong>↗</strong></a>
-        <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer"><span>in</span><b>LinkedIn<small>Perfil profissional</small></b><strong>↗</strong></a>
+        <a href="mailto:mariana.batista.santos29@gmail.com">
+          <span>✉</span>
+          <b>Me envie um e-mail<small>mariana.batista.santos29@gmail.com</small></b>
+          <strong>↗</strong>
+        </a>
+        <a href="https://github.com/MarianaBatistaSantos" target="_blank" rel="noreferrer">
+          <span>⌘</span>
+          <b>GitHub<small>Projetos e código</small></b>
+          <strong>↗</strong>
+        </a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+          <span>in</span>
+          <b>LinkedIn<small>Perfil profissional</small></b>
+          <strong>↗</strong>
+        </a>
       </div>
     </section>
+
   </main>
 
-  <!-- Rodapé: assinatura e ano preenchido automaticamente pelo JavaScript. -->
-  <footer class="footer"><a class="brand" href="#inicio">✦ mariana<span class="pink">_</span></a><p><span class="pink">✦</span></p><p>© Copyright Mariana Batista dos Santos <span id="year"></span></p></footer>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer class="footer">
+    <a class="brand" href="#inicio">✦ mariana<span class="pink">_</span></a>
+    <p><span class="pink">✦</span></p>
+    <p>© Copyright Mariana Batista dos Santos <span id="year"></span></p>
+  </footer>
+
 </body>
+
 </html>
